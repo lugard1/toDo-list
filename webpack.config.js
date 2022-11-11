@@ -24,7 +24,7 @@ module.exports = {
   optimization: {
     runtimeChunk: 'single',
   },
-  
+
   module: {
     rules: [
       {
