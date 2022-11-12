@@ -10,7 +10,7 @@ const taskArray = [
     index: 1,
   },
   {
-    description: 'complete reading and woking ',
+    description: 'Complete reading and working ',
     completed: false,
     index: 2,
   },
