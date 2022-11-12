@@ -1,5 +1,6 @@
-# webpack-boilerplate
-webpack boilerplate is a setup exercise with webpack.
+# TO DO LIST : STRUCTURE
+## Description
+- To do list is a app project for adding and removing list items.
 
 ### Built With
 - HTML 
@@ -20,7 +21,7 @@ To run the project do the following:
 - Open the folder with your code editor
 - Install Live Server Extension on VS Code
 - Open the index.html file 
-- Right click anywhre in the HTML file and select "Open With Live Server"
+- Right click anywhere in the HTML file and select "Open With Live Server"
 - Wait for a new tab to open
 - Voila! You're project is Live. You can procceed to make changes to the files
 

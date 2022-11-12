@@ -1,19 +1,19 @@
 const taskArray = [
-    {
-      description: 'Complete  washing dishes',
-      completed: true,
-      index: 0,
-    },
-    {
-      description: 'Complete eating breakfast',
-      completed: true,
-      index: 1,
-    },
-    {
-      description: 'complete reading and woking ',
-      completed: true,
-      index: 2,
-    },
-  ];
+  {
+    description: 'Complete  washing dishes',
+    completed: false,
+    index: 0,
+  },
+  {
+    description: 'Complete eating breakfast',
+    completed: false,
+    index: 1,
+  },
+  {
+    description: 'Complete reading and working ',
+    completed: false,
+    index: 2,
+  },
+];
 
-  export default taskArray;
+export default taskArray;
