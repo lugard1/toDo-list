@@ -1,4 +1,4 @@
-# TO DO LIST : Add and Remove
+# TO DO LIST : STRUCTURE
 ## Description
 - To do list is a app project for adding and removing list items.
 
