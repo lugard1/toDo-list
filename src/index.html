@@ -1,41 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To Do List</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"/>
-  </head>
-  <body>
-    <main class="container">
-      <header>
-        <div class="header">
-          <h2>Today's To Do</h2>
-        </div>
-        <div class="new-todo">
-          <form id="todoform">
-            <input type="text" name="newtodo" id="newtodo" placeholder="Add to your list ..." />
-            <button type="submit">
-              <i class="bi bi-plus-circle-fill"></i>
-            </button>
-          </form>
-        </div>
-      </header>
-      <div id="todos-list">
-        <!-- <div class="todo" id="0">
-          <i class="bi bi-circle"></i>
-          <i class="bi bi-check-circle-fill"></i>
-          <p class="">Go get milk.</p>
-          <i class="bi bi-pencil-square"></i>
-          <i class="bi bi-trash"></i>
-        </div> -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo list</title>
+
+  <!-- Font awesome icons -->
+  <script src="https://kit.fontawesome.com/7818daa723.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <main id="card-bg">
+      <!-- Container -->
+    <div id="container">
+      <div class="heading">
+        <h2 class="list-title">Today's To Do</h2>
+        <i class="fa-solid fa-rotate reload-icon icon"></i>
       </div>
-      <div class="notification"></div>
-      <div id="clear-btn">
-        <button class="btn">Clear All Completed</button>
+      
+      <!-- Input -->
+      <form action="">
+        <input class="new-task" type="text" placeholder="Add to your list..." required>
+        <i class="fa-solid fa-right-from-bracket icon"> </i>
+      </form>
+      <hr class="line-separator">
+      <!-- Input -->
+
+      <!-- Tasks container -->
+      <ul class="tasks-container"> </ul>
+      <!-- Tasks container -->
+
+      <div class="completed-container">
+        <button class="completed-text">Clear All Completed</button>
       </div>
-    </main>
-    
-  </body>
+
+    </div>
+      <!-- Container -->
+
+  </main>
+
+</body>
+
 </html>

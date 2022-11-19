@@ -1,37 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 
-/* :root {
-  --container-height: 600px;
-  --contaier-width: 400px;
-  --header-height: 150px;
-} */
-
 * {
-  padding: 0;
   margin: 0;
-  box-sizing: border-box;
-  font-family: 'Ubuntu', monospace;
+  padding: 0;
+  border: 0;
+  font-family: 'ubuntu', monospace;
 }
 
-html {
-  font-size: 20px;
+.icon {
+  cursor: pointer;
 }
 
-body {
-  width: 100vw;
-  height: 100vh;
+.delete-icon {
+  cursor: pointer;
+  color: rgba(255, 0, 0, 0.907);
+}
+
+#card-bg {
+  width: 100%;
+  margin: auto;
+}
+
+.editable {
+  cursor: text;
+}
+
+#container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.container {
-  /* background-color: #fff;
-  width: var(--contaier-width);
-  height: var(--container-height); */
-  position: relative;
-  overflow: hidden;
   width: 60%;
+  background-color: #fff;
   margin: 8em auto;
   border: 1px solid #000;
   border-radius: 8px;
@@ -39,7 +39,10 @@ body {
   box-shadow: 3px 3px 3px gray, -3px -3px 3px rgb(34, 100, 100);
 }
 
-header {
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   height: 7em;
   background-size: cover;
@@ -47,123 +50,110 @@ header {
   background-color: rgba(128, 128, 128, 0.8);
 }
 
-.header {
+.list-title {
+  margin-left: 20px;
+}
+
+.reload-icon {
+  margin-right: 20px;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  height: 100px;
+  margin-top: 10px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid lightgray;
+}
+
+.new-task {
+  border: none;
+  width: 400px;
+  height: 40px;
+  margin-left: 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  text-indent: 15px;
+}
+
+.fa-right-from-bracket {
+  margin-right: 20px;
+}
+
+::placeholder {
+  padding-left: 5px;
+  font-size: 16px;
+}
+
+.tasks-container {
+  align-items: center;
+  width: 100%;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 10px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgray;
+}
+
+.task:nth-child(1) {
+  margin-top: 25px;
+}
+
+.task .left-side {
+  display: flex;
+  column-gap: 10px;
+  margin-left: 15px;
+}
+
+.task .right-side {
+  margin-right: 15px;
+}
+
+.completed-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #000;
-}
-
-.new-todo {
-  width: 100%;
-  height: 50px;
-  padding: 0.25rem 0;
-  background-color: #fff;
-}
-
-.new-todo form {
-  display: flex;
-  align-items: center;
-}
-
-.new-todo form input {
-  flex: 1;
-  height: 40px;
-  background-color: transparent;
-  border: none;
-  border-right: 0;
-  outline: transparent;
-  padding-left: 0.5rem;
-  font-size: 1rem;
-  color: #000;
-}
-
-.new-todo form button {
-  width: 60px;
-  height: 40px;
-  font-size: 1rem;
-  background-color: transparent;
-  color: #000;
-  border: none;
-  border-left: 0;
-  cursor: pointer;
-}
-
-.new-todo form button:hover {
-  text-shadow: 1px 1px 20px rgba(0, 0, 0, 0.8);
-}
-
-#todos-list {
-  /* height: calc(var(--container-height) - var(--header-height)); */
-  background-color: #fff;
-  margin: auto;
-  padding: 0.5rem;
-  border: 1px solid rgb(219, 219, 219);
-
-  /* overflow: scroll; */
-  border-radius: 0 0 5px 5px;
-}
-
-#todos-list .todo {
-  display: flex;
-  align-items: center;
-  padding: 0.75rem 0.5rem;
-  border-radius: 5px;
-}
-
-#todos-list .todo:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-#todos-list .todo * {
-  cursor: pointer;
-  margin-right: 0.5rem;
-}
-
-#todos-list .todo i {
-  font-size: 0.9rem;
-}
-
-#todos-list .todo p {
-  flex: 1;
-  word-break: break-all;
-}
-
-.checked {
-  text-decoration: line-through;
-  color: grey;
-}
-
-#todos-list .todo .bi-pencil-square {
-  color: rgb(31, 177, 48);
-}
-
-#todos-list .todo .bi-trash {
-  color: rgb(236, 82, 82);
-  margin: 0;
-}
-
-.renderDesc {
-  text-align: center;
-}
-
-#clearBtn {
-  width: 100%;
-  margin: auto;
-}
-
-.btn {
-  width: 100%;
-  display: block;
-  border: none;
   background-color: blueviolet;
   padding: 20px 0;
-  margin: auto;
-  font-size: 16px;
-  cursor: pointer;
-  text-align: center;
-  color: #fff;
+  width: 100%;
+  height: 2em;
   border-radius: 0 0 8px 8px;
+}
+
+.completed-text {
+  border: none;
+  font-size: 16px;
+  color: #fff;
+  background-color: blueviolet;
+  cursor: pointer;
+}
+
+.completed-text:hover {
+  text-decoration: underline;
+  color: aqua;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    margin: 0;
+    background-color: rgb(165, 218, 32);
+  }
+
+  #container {
+    width: 90%;
+    height: 90vh;
+  }
+
+  .new-task {
+    height: 20px;
+  }
 }

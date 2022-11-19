@@ -1,130 +1,73 @@
-const Display = () => {
-  // SELECT ELEMENTS
-  const form = document.getElementById('todoform');
-  const todoInput = document.getElementById('newtodo');
-  const todosListEl = document.getElementById('todos-list');
-  // const notificationEl = document.querySelector('.notification');
+import addObjToLocalStorage from './objectToLS.js';
+import { store, taskArray } from './store.js';
 
-  // VARS
-  let todos = JSON.parse(localStorage.getItem('todos')) || [];
-  let EditTodoId = -1;
+const submit = document.querySelector('.fa-right-from-bracket');
+const tasksContainer = document.querySelector('.tasks-container');
+const taskName = document.querySelector('.new-task');
 
-  // 1st render
-  renderTodos();
-
-  // FORM SUBMIT
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    saveTodo();
-    renderTodos();
-    localStorage.setItem('todos', JSON.stringify(todos));
-  });
-
-  // SAVE TODO
-  let saveTodo = () => {
-    const todoValue = todoInput.value;
-
-    // check if the todo is empty
-    const isEmpty = todoValue === '';
-
-    // check for duplicate todos
-    const isDuplicate = todos.some((todo) => todo.value.toUpperCase() === todoValue.toUpperCase());
-
-    if (isEmpty) {
-      showNotification("Todo's input is empty");
-    } else if (isDuplicate) {
-      showNotification('Todo already exists!');
-    } else {
-      if (EditTodoId >= 0) {
-        todos = todos.map((todo, index) => ({
-          ...todo,
-          value: index === EditTodoId ? todoValue : todo.value,
-        }));
-        EditTodoId = -1;
-      } else {
-        todos.push({
-          value: todoValue,
-          checked: false,
-          color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
-        });
-      }
-
-      todoInput.value = '';
-    }
-  };
-
-  // RENDER TODOS
-  function renderTodos() {
-    if (todos.length === 0) {
-      todosListEl.innerHTML = '<p class="renderDesc">Yet to start!</p>';
-      return;
-    }
-
-    // CLEAR ELEMENT BEFORE A RE-RENDER
-    todosListEl.innerHTML = '';
-
-    // RENDER TODOS
-    todos.forEach((todo, index) => {
-      todosListEl.innerHTML += `
-    <div class="todo" id=${index}>
-      <i 
-        class="bi ${todo.checked ? 'bi-check-circle-fill' : 'bi-circle'}"
-        style="color : ${todo.color}"
-        data-action="check"
-      ></i>
-      <p class="${todo.checked ? 'checked' : ''}" data-action="check">${todo.value}</p>
-      <i class="bi bi-pencil-square" data-action="edit"></i>
-      <i class="bi bi-trash" data-action="delete"></i>
-    </div>
-    `;
-    });
+const addTask = (e) => {
+  e.preventDefault();
+  if (e.target.classList.contains('fa-right-from-bracket')) {
+    if (!taskName.value) return;
+    addObjToLocalStorage(taskName.value);
+    taskName.value = '';
   }
-
-  // CLICK EVENT LISTENER FOR ALL THE TODOS
-  todosListEl.addEventListener('click', (event) => {
-    const { target } = event;
-    const parentElement = target.parentNode;
-
-    if (parentElement.className !== 'todo') return;
-
-    // t o d o id
-    const todo = parentElement;
-    const todoId = Number(todo.id);
-
-    // target action
-    const { action } = target.dataset;
-    action === 'check' && checkTodo(todoId);
-    action === 'edit' && editTodo(todoId);
-    action === 'delete' && deleteTodo(todoId);
-  });
-
-  // CHECK A TODO
-  let checkTodo = (todoId) => {
-    todos = todos.map((todo, index) => ({
-      ...todo,
-      checked: index === todoId ? !todo.checked : todo.checked,
-    }));
-
-    renderTodos();
-    localStorage.setItem('todos', JSON.stringify(todos));
-  };
-
-  // EDIT A TODO
-  let editTodo = (todoId) => {
-    todoInput.value = todos[todoId].value;
-    EditTodoId = todoId;
-  };
-
-  // DELETE TODO
-  let deleteTodo = (todoId) => {
-    todos = todos.filter((todo, index) => index !== todoId);
-    EditTodoId = -1;
-
-    // re-render
-    renderTodos();
-    localStorage.setItem('todos', JSON.stringify(todos));
-  };
 };
 
-export default Display();
+const deleteTask = (e) => {
+  if (e.target.classList.contains('delete-icon')) {
+    const btn = e.target;
+    const removableTask = btn.closest('li');
+    const taskIndex = removableTask.dataset.indexNumber;
+
+    // Remove element from array
+    taskArray.splice(taskIndex - 1, 1);
+    localStorage.setItem('taskInput', taskArray);
+    store();
+  }
+};
+
+const edit = (e) => {
+  const editableText = e.target;
+  const editableTask = editableText.closest('li');
+  const taskIndex = editableTask.dataset.indexNumber;
+  if (editableText.matches('p')) {
+    editableText.setAttribute('contenteditable', 'true');
+    editableText.focus();
+  }
+
+  // event listener to store the edited value to local storage.
+  editableText.addEventListener('blur', () => {
+    taskArray[taskIndex - 1].description = editableText.innerText;
+    store();
+  });
+};
+
+const checkBoxesStatus = (e) => {
+  const checkBoxes = document.querySelectorAll('input[type="checkbox"]');
+  const clickLocation = e.target;
+  for (let i = 0; i < checkBoxes.length; i += 1) {
+    if (clickLocation === checkBoxes[i]) {
+      const element = clickLocation.closest('li');
+      const arrrayNumber = element.dataset.indexNumber - 1;
+      const arrayElement = taskArray[arrrayNumber];
+      if (checkBoxes[i].checked) {
+        arrayElement.completed = true;
+        store();
+      } else {
+        arrayElement.completed = false;
+        store();
+      }
+    }
+  }
+};
+
+export {
+  addTask,
+  edit,
+  deleteTask,
+  tasksContainer,
+  taskName,
+  submit,
+  checkBoxesStatus,
+};
