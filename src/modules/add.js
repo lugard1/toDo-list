@@ -1,7 +1,7 @@
-export default class Dom {
+export default class DOM {
   static addDOM(taskArray) {
-    const isChecked = (c) => {
-      if (c) {
+    const isChecked = (e) => {
+      if (e) {
         return ' checked';
       }
       return '';
