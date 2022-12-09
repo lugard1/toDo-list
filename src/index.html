@@ -1,32 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo list</title>
+
+  <!-- Font awesome icons -->
   <script src="https://kit.fontawesome.com/7818daa723.js" crossorigin="anonymous"></script>
-
-  <title>To Do list</title>
 </head>
+
 <body>
-  <main>
-    <div class="toDo-title">
-      <h2>Today's To Do</h2>
-      <i class="fa-sharp fa-solid fa-arrows-rotate"></i>
-    </div>
 
-    <div class="toDo-add">
-      <input class="addInput" type="text" name="add-list" placeholder="Add to your list...">
-      <i class="fa-solid fa-arrow-right-to-bracket"></i>
-    </div>
+  <main id="card-bg">
+      <!-- Container -->
+    <div id="container">
+      <div class="heading">
+        <h2 class="list-title">Today's To Do</h2>
+        <i class="fa-solid fa-rotate reload-icon icon"></i>
+      </div>
+      
+      <!-- Input -->
+      <form action="">
+        <input class="new-task" type="text" placeholder="Add to your list..." required>
+        <i class="fa-solid fa-right-from-bracket icon"> </i>
+      </form>
+      <hr class="line-separator">
+      <!-- Input -->
 
-    <div class="toDo-list">
-            
-    </div>
+      <!-- Tasks container -->
+      <ul class="tasks-container"> </ul>
+      <!-- Tasks container -->
 
-    <div class="clearBtn">
-      <button type="reset" class="btn"><p>Clear All Completed</p></button>
+      <div class="completed-container">
+        <button class="completed-text">Clear All Completed</button>
+      </div>
+
     </div>
+      <!-- Container -->
+
   </main>
-    
+
 </body>
+
 </html>
