@@ -8,18 +8,17 @@ const displayTasks = () => {
   const tasksContainer = document.querySelector('.tasks-container');
   tasksContainer.innerHTML = '';
   taskArray.sort((a, b) => a.index - b.index).map((task) => task.description);
-  taskArray
-    .forEach((task, index) => {
-      let box;
-      let line;
-      if (task.completed) {
-        box = 'checked';
-        line = 'line-through';
-      } else {
-        box = '';
-        line = 'none';
-      }
-      tasksContainer.innerHTML += `
+  taskArray.forEach((task, index) => {
+    let box;
+    let line;
+    if (task.completed) {
+      box = 'checked';
+      line = 'line-through';
+    } else {
+      box = '';
+      line = 'none';
+    }
+    tasksContainer.innerHTML += `
       <!-- Task -->
       <li class="task" data-index-number="${index + 1}">
         <div class="left-side">
@@ -33,8 +32,8 @@ const displayTasks = () => {
       <hr class="line-separator">
       <!-- Task -->
       `;
-      store();
-    });
+    store();
+  });
 
   /* Add */
   const form = document.querySelector('form');

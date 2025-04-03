@@ -19,10 +19,13 @@ const deleteTask = (e) => {
     const btn = e.target;
     const removableTask = btn.closest('li');
     const taskIndex = removableTask.dataset.indexNumber;
-    
 
     // Remove element from array
-    taskArray.splice(taskIndex -1, 1);
+    // taskArray.splice(taskIndex -1, 1);
+    taskArray.splice(taskIndex - 1, 1);
+    for (let i = 0; i < taskArray.length; i += 1) {
+      taskArray[i].index = i;
+    }
 
     localStorage.setItem('taskInput', taskArray);
     store();

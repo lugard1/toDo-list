@@ -4,7 +4,7 @@ const addObjToLocalStorage = (value) => {
   const object = {
     description: value,
     completed: false,
-    index: taskArray.length + 1,
+    index: taskArray.length,
   };
   taskArray.unshift(object);
   store();
