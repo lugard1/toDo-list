@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open",
-    "build": "webpack"
+    "build": "webpack",
+    "lint": "stylelint **/*.css **/*.scss --fix",
+    "format": "prettier --write '**/*.css' '**/*.scss' '**/*.js'"
   },
   "repository": {
     "type": "git",

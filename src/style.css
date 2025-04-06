@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   border: 0;
-  font-family: 'ubuntu', monospace;
+  font-family: ubuntu, monospace;
 }
 
 .icon {
@@ -13,7 +13,7 @@
 
 .delete-icon {
   cursor: pointer;
-  color: rgba(255, 0, 0, 0.907);
+  color: rgb(255 0 0 / 90.7%);
 }
 
 #card-bg {
@@ -37,7 +37,9 @@
   border: 1px solid #000;
   border-radius: 8px;
   box-sizing: border-box;
-  box-shadow: 3px 3px 3px gray, -3px -3px 3px rgb(34, 100, 100);
+  box-shadow:
+    3px 3px 3px gray,
+    -3px -3px 3px rgb(34 100 100);
 }
 
 .heading {
@@ -48,7 +50,7 @@
   height: 7em;
   background-size: cover;
   border-radius: 5px 5px 0 0;
-  background-color: rgba(128, 128, 128, 0.8);
+  background-color: rgb(128 128 128 / 80%);
 }
 
 .list-title {
@@ -145,10 +147,10 @@ form {
   color: aqua;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (width <= 768px) {
   body {
     margin: 0;
-    background-color: rgb(165, 218, 32);
+    background-color: rgb(165 218 32);
   }
 
   #container {
